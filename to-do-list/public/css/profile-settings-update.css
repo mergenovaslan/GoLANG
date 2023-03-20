@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;700&family=Lato:wght@300&family=Oswald&family=Poppins&display=swap');
+img{
+    border-radius: 50%;
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+}
+.profile-task-content-contianer{
+    background: white;
+    width: 95%;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 17px;
+    font-family: 'Lato', sans-serif;
+}
+.settings-update-page{
+    margin: 10px 30px;
+}
+.page-title{
+    font-weight: 900;
+    font-size: 35px;
+    color: rgb(114, 114, 114);
+}
+.image-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px auto;
+}
+.form-container{
+    margin-top: 20px;
+}
+.input-title-container{
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(109, 109, 109);
+}
+.input-container{
+    margin-top: 10px;
+}
+.input-tag{
+    font: 20px;
+    border: 1.5px solid rgba(0, 0, 255, 0.658);
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+
+}
+.input-tag:focus{
+    border: 1.5px solid rgba(0, 0, 255, 0.658);
+
+}
+.submit-button{
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: greenyellow;
+    border: 1px solid greenyellow;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 20px;
+    margin-top: 30px;
+}

@@ -1,0 +1,39 @@
+{{ define "head"}}
+<title>Your Tasks</title>
+<link rel="stylesheet" href="/static/css/profile-base.css">
+<link rel="stylesheet" href="/static/css/profile-tasks.css">
+{{ end }}
+{{ define "profile-content" }}
+    <div class="profile-content">
+        <div class="profile-content-title">
+            My Tasks
+        </div>
+        <a href="/profile-add-task-page">Add Task</a>
+
+    </div>
+    <div class="tasks-main-container">
+            <div class="task-container">
+                <div class="task-cat main-cat">Title</div>
+                <div class="task-cat main-cat">Created At</div>
+                <div class="task-cat main-cat">Deadline</div>
+                <div class="task-cat main-cat">Description</div>
+                <div class="task-cat main-cat"></div>
+            </div>
+            <div class="tasks-container">
+                {{ range . }}
+                    <form action="/profile-delete-task" method="post">
+                        <input type="number" value="{{ .ID }}" name="id" hidden>
+                        <div class="task-container">
+                            <div class="task-cat">{{ .Title }}</div>
+                            <div class="task-cat">{{ .CreatedAt }}</div>
+                            <div class="task-cat">{{ .Deadline }}</div>
+                            <div class="task-cat">{{ .Description }}</div>
+                            <div class="task-cat finished-button-container">
+                                <button class="finished-button" type="submit">Finished</button>
+                            </div>
+                        </div>
+                    </form>
+                {{ end }}
+            </div>
+    </div>
+{{ end }}

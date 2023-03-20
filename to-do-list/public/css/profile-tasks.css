@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;700&family=Lato:wght@300;400&family=Oswald&family=Poppins&display=swap');
+.profile-content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 96.5%;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+    margin-top: 10px;
+}
+.profile-content-title{
+    color: white;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 20px;
+}
+.profile-content a{
+    display: flex;
+    color: rgba(31, 31, 31, 0.856);
+    background-color: greenyellow;
+    height: 40px;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 150px;
+    justify-content: center;
+    font-family: 'Poppins',sans-serif;
+}
+.tasks-main-container{
+    width: 95.5%;
+    background-color: white;
+    border-radius: 5px;
+}
+.task-container{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+.main-cat{
+    font-weight: 600;
+    color: rgb(126, 126, 126);
+}
+.task-cat{
+    width: 20%;
+}
+.tasks-container{
+    background-color: rgb(233, 233, 233);
+    border-radius: 5px;
+}
+.finished-button{
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: greenyellow;
+    border: 1px solid greenyellow;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 20px;
+}
+.finished-button-container{
+    display: flex;
+    justify-content: flex-end;
+}

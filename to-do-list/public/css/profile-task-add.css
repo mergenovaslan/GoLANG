@@ -1,0 +1,62 @@
+.profile-task-content-contianer{
+    background: rgb(223, 223, 223);
+    width: 95%;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 15px;
+}
+.profile-add-task-title-container{
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    margin: 0px 0px 20px 0px;
+}
+.form-container{
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+}
+#task-title-input{
+    width: 100%;
+    border: none;
+    font-size: 25px;
+    font-weight: bolder;
+    border-bottom: 1px solid rgb(190, 190, 190);
+    margin-bottom: 10px;
+}
+#task-description-input{
+    width: 100%;
+    font-size: 20px;
+    border: 0px solid white;
+}
+.task-deadline-isImportant-input-container{
+    background-color: rgb(223, 223, 223);
+    padding: 10px;
+    border-radius: 15px;
+}
+.task-deadline-input-container{
+    display: flex;
+    width: 90%;
+    margin-bottom: 10px;
+}
+.task-deadline-title-container{
+    font-family: 'Poppins', sans-serif;
+    margin-right: 10px;
+}
+.task-isImportant-input-container{
+    display: flex;
+    width: 90%;
+}
+.task-isImportant-title-container{
+    font-family: 'Poppins', sans-serif;
+    margin-right: 10px;
+}
+.submit-button{
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: greenyellow;
+    border: 1px solid greenyellow;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 20px;
+    margin-top: 30px;
+}

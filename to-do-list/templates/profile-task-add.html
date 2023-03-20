@@ -1,0 +1,34 @@
+{{ define "head"}}
+<title>Add New Task</title>
+<link rel="stylesheet" href="/static/css/profile-base.css">
+<link rel="stylesheet" href="/static/css/profile-task-add.css">
+<script type="text/javascript">
+    window.onload=function(){//from ww  w . j  a  va2s. c  o  m
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementsByName("deadline")[0].setAttribute('min', today);
+    }
+
+</script>
+{{ end }}
+{{ define "profile-content" }}
+<div class="profile-add-task-title-container">
+    New Task
+</div>
+<div class="form-container">
+    <form action="/profile-add-task" method="post">
+        <input type="text" name="title" placeholder="Write a title" id="task-title-input" required>
+        <textarea name="description" id="task-description-input" rows="5" cols="100"></textarea>
+        <div class="task-deadline-isImportant-input-container">
+            <div class="task-deadline-input-container">
+                <div class="task-deadline-title-container">Dealine:</div>
+                <input type="date" name="deadline" min="today">
+            </div>
+            <div class="task-isImportant-input-container">
+                <div class="task-isImportant-title-container">Is important?</div>
+                <input type="checkbox" name="isImportant">
+            </div>
+        </div>
+        <input type="submit" class="submit-button">
+    </form>
+</div>
+{{ end }}

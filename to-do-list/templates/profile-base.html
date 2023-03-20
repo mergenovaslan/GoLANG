@@ -1,0 +1,30 @@
+{{ define "content" }}
+    <div class="profile-content-container">
+        <div class="profile-menu-container">
+            <a href="/profile-tasks">Tasks</a>
+            <a href="">Projects</a>
+            <a href="">Marketing</a>
+            <a href="">Websites and Shops</a>
+            <a href="">Companies</a>
+            <a href="">Automation</a>
+            <a href="/edit-profile">Edit Profile</a>
+            <a href="">Mores</a>
+
+        </div>
+        <div class="profile-right-window-container">
+            <div class="profile-content-navbar-container">
+                <a href="">Tasks</a>
+                <a href="">Projects</a> 
+                <a href="">Marketing</a>
+                <a href="">Websites and Shops</a>
+                <a href="">Companies</a>
+                <a href="">Automation</a>
+                <a href="">Apps</a>
+                <a href="">Mores</a>
+            </div>
+            <div class="profile-task-content-contianer">
+                {{ template "profile-content" . }}
+            </div>
+        </div>
+    </div>
+{{ end }}

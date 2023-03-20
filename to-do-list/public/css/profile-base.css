@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;700&family=Lato:wght@300;400&family=Oswald&family=Poppins&display=swap');
+.profile-content-container{
+    display:flex;
+    background: url("/static/images/profile-background.jpeg");
+    background-size: cover;
+    width: 100%;
+    padding: 20px;
+    height: 100vh;
+}
+.profile-content-container a{
+    text-decoration: none;
+}
+.profile-menu-container{
+    display:flex;
+    flex-direction: column;
+    width: 15%;
+}
+.profile-menu-container a{
+    color: white;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+.profile-content-navbar-container{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    height: 50px;
+    padding: 0px 15px;
+    width: 95%;
+}
+.profile-content-navbar-container a{
+    color: black;
+    margin-right: 25px;
+    font-family: 'Poppins', sans-serif;
+}
+.profile-right-window-container{
+    width: 85%;
+}
+
+
