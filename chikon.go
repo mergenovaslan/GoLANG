@@ -5,7 +5,6 @@ import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"html/template"
-	"log"
 	"net/http"
 )
 
@@ -16,10 +15,10 @@ type Main struct {
 	Balance int16
 }
 type User struct {
-	FirstName string `json:"firstname" bson:"firstname"`
-	LastName  string `json:"lastname" bson:"lastname"`
-	Email     string `json:"email" bson:"email"`
-	Password  string `json:"password" bson:"password"`
+	id       int
+	email    string
+	password string
+	nickname string
 }
 
 func (m Main) getAll() string {
@@ -27,7 +26,7 @@ func (m Main) getAll() string {
 }
 func home(w http.ResponseWriter, r *http.Request) {
 	chikon := Main{"Chikon", 20, "Female", 5000}
-	templ, _ := template.ParseFiles("templates/home_page.html", "templates/second.html")
+	templ, _ := template.ParseFiles("templates/home_page.html", "templates/second.html", "templates/Register.html")
 	templ.Execute(w, chikon)
 }
 
@@ -36,9 +35,31 @@ func second(w http.ResponseWriter, r *http.Request) {
 	templ, _ := template.ParseFiles("templates/second.html")
 	templ.Execute(w, sec)
 }
-func register(w http.ResponseWriter, r *http.Request) {
+func third(w http.ResponseWriter, r *http.Request) {
 	templ, _ := template.ParseFiles("templates/Register.html")
-	templ.Execute(w, r)
+	templ.Execute(w, third)
+}
+func register(w http.ResponseWriter, r *http.Request) {
+
+	email := r.FormValue("email")
+	password := r.FormValue("password")
+	nickname := r.FormValue("nickname")
+
+	db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:3306)/golang")
+	if err != nil {
+		panic(err)
+	}
+	defer db.Close()
+
+	fmt.Println("Access")
+
+	insert, err := db.Query(fmt.Sprintf("Insert Into `accounts` (`email`,`password`,`nickname`) Values('%s','%s','%s')", email, password, nickname))
+	if err != nil {
+		panic(err)
+	}
+	defer insert.Close()
+
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 func save(w http.ResponseWriter, r *http.Request) {
 	ID := r.FormValue("ID")
@@ -67,7 +88,8 @@ func handleRequest() {
 	http.HandleFunc("/", home)
 	http.HandleFunc("/sec/", second)
 	http.HandleFunc("/save", save)
-	http.HandleFunc("/register", register)
+	http.HandleFunc("/third/", third)
+	http.HandleFunc("/register/", register)
 	http.ListenAndServe(":5555", nil)
 }
 func main() {
@@ -75,3 +97,4 @@ func main() {
 	handleRequest()
 
 }
+
