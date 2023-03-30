@@ -1,0 +1,57 @@
+package main
+
+import (
+    "encoding/json"
+    
+   
+"fmt"
+    
+   
+"net/http"
+    
+   
+"strconv"
+)
+
+type Product struct {
+    Name   
+    Name  
+
+   
+string  `json:"name"`
+    Price  float64 `json:"price"`
+    Rating float64 `json:"rating"`
+}
+
+var products = []Product{
+    {Name: "Product A", Price: 100.0, Rating: 4.5},
+    {Name: "Product B", Price: 200.0, Rating: 4.0},
+    {Name: "Product C", Price: 300.0, Rating: 3.5},
+    {Name: "Product D", Price: 400.0, Rating: 3.0},
+    {Name: "Product E", Price: 500.0, Rating: 2.5},
+}
+
+func main() {
+    http.HandleFunc("/products", productsHandler)
+    http.ListenAndServe(":8080", nil)
+}
+
+func productsHandler(w http.ResponseWriter, r *http.Request) {
+    minPriceStr := r.URL.Query().Get("minPrice")
+    maxPriceStr := r.URL.Query().Get("maxPrice")
+    minRatingStr := r.URL.Query().Get("minRating")
+
+    minPrice, _ := strconv.ParseFloat(minPriceStr, 64)
+    maxPrice, _ := strconv.ParseFloat(maxPriceStr, 64)
+    minRating, _ := strconv.ParseFloat(minRatingStr, 64)
+
+    filteredProducts := make([]Product, 0)
+
+    for _, p := range products {
+        if p.Price >= minPrice && p.Price <= maxPrice && p.Rating >= minRating {
+            filteredProducts = append(filteredProducts, p)
+        }
+    }
+
+    json.NewEncoder(w).Encode(filteredProducts)
+}
