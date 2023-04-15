@@ -1,0 +1,34 @@
+minPriceStr := r.URL.
+   
+
+    minPriceStr := r.URL.Query().Get(
+    maxPriceStr := r
+func productsHandler(w http.ResponseWriter, r *http.Request) {
+    minPriceStr := r.URL.Query().Get("minPrice")
+    maxPriceStr := r.URL.Query().Get("maxPrice")
+    minRatingStr := r.URL.Query().Get("minRating")
+    ratingStr := r.URL.Query().Get("rating")
+
+    minPrice, _ := strconv.ParseFloat(minPriceStr, 64)
+    maxPrice, _ := strconv.ParseFloat(maxPriceStr, 64)
+    minRating, _ := strconv.ParseFloat
+   
+(minRatingStr, 64)
+    rating, _ := strconv.ParseFloat(ratingStr, 64)
+
+    filteredProducts := make([]Product, 0)
+
+    for _, p := range products {
+        if p.Price >= minPrice && p.Price <= maxPrice && p.Rating >= minRating {
+            if rating > 0 {
+                if p.Rating == rating {
+                    filteredProducts = append(filteredProducts, p)
+                }
+            } else {
+                filteredProducts = append(filteredProducts, p)
+            }
+        }
+    }
+
+    json.NewEncoder(w).Encode(filteredProducts)
+}
