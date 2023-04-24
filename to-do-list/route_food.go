@@ -71,3 +71,20 @@ func receiptAdd(writer http.ResponseWriter, request *http.Request) {
 	}
 	http.Redirect(writer, request, "/receipts-main-page", 302)
 }
+func updateComm(writer http.ResponseWriter, request *http.Request) {
+	request.ParseMultipartForm(10 << 20)
+	session, err := session(writer, request)
+	receipt, err := data.ReceiptsByUserID(session.User_ID)
+	if err != nil {
+		// danger method
+		return
+	}
+	receipt.Instruction = request.PostFormValue("Comm")
+	err = receipt.Update()
+	if err != nil {
+		//danger method
+		return
+	}
+
+	http.Redirect(writer, request, "//receipts-main-page", 302)
+}

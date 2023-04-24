@@ -16,10 +16,8 @@ func (session *Session) Check() (valid bool, err error) {
 		valid = false
 		return
 	}
-	if session.ID != 0 {
-		valid = true
-	}
-	return
+
+	return session.ID != 0, nil
 }
 
 func (session *Session) DeleteByUUID() (err error) {

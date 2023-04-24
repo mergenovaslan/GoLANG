@@ -28,10 +28,10 @@ func main() {
 	mux.HandleFunc("/receipts-main-page", foodMainPage)
 	mux.HandleFunc("/receipt-add-page", receiptAddPage)
 	mux.HandleFunc("/receipt-add", receiptAdd)
+	mux.HandleFunc("/receipts-main-page", updateComm)
 	server := &http.Server{
 		Addr:    data.Config.Address,
 		Handler: mux,
 	}
 	server.ListenAndServe()
 }
-

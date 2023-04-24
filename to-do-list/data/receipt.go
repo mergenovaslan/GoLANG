@@ -46,25 +46,29 @@ func (receipt *Receipt) Delete() (err error) {
 	_, err = st.Exec(receipt.ID)
 	return
 }
-
-func ReceiptsByUserID(userID int) (receipts []Receipt, err error) {
-	rows, err := DB.Query(
-		"SELECT ID, USER_ID, NAME, PHOTO, DURATION, INSTRUCTION FROM RECEIPTS WHERE USER_ID=$1", userID,
-	)
+func (receipt *Receipt) Update() (err error) {
+	if existsUsernameNotID(receipt.Name, receipt.ID) {
+		//danger method
+		return
+	}
+	st, err := DB.Prepare("UPDATE USERS SET INSTRUCTION = $1 WHERE ID = $2")
 	if err != nil {
 		return
 	}
-	defer rows.Close()
-	for rows.Next() {
-		var receipt Receipt
-		err = rows.Scan(
-			&receipt.ID, &receipt.User_ID, &receipt.Name, &receipt.Photo, &receipt.Duration, &receipt.Instruction,
-		)
-		if err != nil {
-			return
-		}
-		receipts = append(receipts, receipt)
-	}
+	defer st.Close()
+	_, err = st.Exec(receipt.Instruction, receipt.ID)
+	return
+}
+
+func ReceiptsByUserID(userID int) (receipt Receipt, err error) {
+	err = DB.QueryRow("SELECT ID, USER_ID, NAME, PHOTO, DURATION, INSTRUCTION FROM RECEIPTS WHERE USER_ID=$1", userID).Scan(
+		&receipt.ID,
+		&receipt.User_ID,
+		&receipt.Name,
+		&receipt.Photo,
+		&receipt.Duration,
+		&receipt.Instruction,
+	)
 	return
 }
 

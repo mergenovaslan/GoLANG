@@ -18,8 +18,16 @@
             <img class="food-image" src="{{.Photo}}" alt="">
             <div class="food-additional-info-container">
                 <div class="food-title-container">{{.Name}}</div>
-                <div class="food-description-container">{{.Instruction}}</div>  
-                <div class="food-created-date-container">{{.CreatedAt}}</div>  
+                <div class="food-created-date-container">{{.CreatedAt}}</div>
+
+                <div class="food-created-date-container"><input type="number" name="duration" min="0" value="{{.Duration}}" required></div>
+                <form action="/receipts-main-page" method="post" enctype="multipart/form-data">
+                    <div class="food-description-container">
+                    <div class="input-title-container">Comment</div>
+                    <input class="input-tag" type="text" name="Comm" value="{{.Instruction}}" placeholder="Comment" required>
+                </div>
+                <button class="submit-button" type="submit">Add Comm</button>
+                </form>
             </div>
         </div>
     {{ end }}

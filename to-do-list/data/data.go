@@ -37,7 +37,7 @@ func StorageConfig(conf config.Config) {
 func init() {
 	Config = config.NewConfig()
 	StorageConfig(Config)
-	config.InitDB(DB)
+	//config.InitDB(DB)
 }
 
 func Encrypt(plaintext string) (cryptext string) {
